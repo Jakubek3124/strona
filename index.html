@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona logowania</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: none; /* Usuń białą ramkę */
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+            font-weight: 600;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        .login-container .error-message {
+            color: #d9534f;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Logowanie</h1>
+        <div class="error-message" id="error-message">Niepoprawna nazwa użytkownika lub hasło</div>
+        <form id="login-form" action="/login" method="post">
+            <label for="username">Nazwa użytkownika:</label>
+            <input type="text" id="username" name="username" placeholder="Wprowadź swoją nazwę użytkownika" required>
+            
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" placeholder="Wprowadź swoje hasło" required>
+            
+            <button type="submit">Zaloguj się</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Zapobiega domyślnej akcji formularza
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Przykładowe dane logowania admina
+            const adminUsername = 'admin';
+            const adminPassword = 'password';
+
+            // Sprawdzenie poprawności danych logowania
+            if (username === adminUsername && password === adminPassword) {
+                // Przekierowanie do lokalnego pliku
+                window.location.href = 'file:///C:/Users/User/Desktop/EchoGuard%20strona/strona.html'; 
+            } else {
+                errorMessage.style.display = 'block'; // Wyświetl komunikat o błędzie przy nieudanym logowaniu
+            }
+        });
+    </script>
+</body>
+</html>
